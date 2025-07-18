@@ -104,17 +104,17 @@ in {
       css.enable = true;
       html.enable = true;
       sql.enable = true;
-      java.enable = true;
-      kotlin.enable = true;
-      ts.enable = true;
-      go.enable = true;
+      java.enable = false;
+      kotlin.enable = false;
+      ts.enable = false;
+      go.enable = false;
       lua.enable = true;
-      zig.enable = true;
+      zig.enable = false;
       python.enable = true;
-      typst.enable = true;
+      typst.enable = false;
       rust = {
-        enable = true;
-        crates.enable = true;
+        enable = false;
+        crates.enable = false;
       };
     };
 
