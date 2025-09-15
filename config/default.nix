@@ -1,4 +1,4 @@
-{...}: let
+_: let
   currentSystemHome = builtins.getEnv "HOME";
 
   evaledUndoDir =
@@ -20,6 +20,8 @@ in {
     ./trouble-keymaps.nix
     ./tmux-navigator.nix # Added vim-tmux-navigator
     ./telescope-zoxide.nix # Added telescope-zoxide
+    #./latex.nix
+    ./typst.nix
   ];
 
   config.vim = {
@@ -100,18 +102,18 @@ in {
       markdown.enable = true;
 
       bash.enable = true;
-      clang.enable = true;
+      clang.enable = false;
       css.enable = true;
       html.enable = true;
-      sql.enable = true;
+      sql.enable = false;
       java.enable = false;
       kotlin.enable = false;
       ts.enable = false;
       go.enable = false;
-      lua.enable = true;
+      lua.enable = false;
       zig.enable = false;
       python.enable = true;
-      typst.enable = false;
+      #typst.enable = false;
       rust = {
         enable = false;
         crates.enable = false;
