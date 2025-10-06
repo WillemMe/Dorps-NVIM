@@ -7,7 +7,7 @@ _: let
     else "${currentSystemHome}/.neovim/undodir";
 in {
   imports = [
-    ./avante.nix
+    #./avante.nix
     ./bqf.nix # Added nvim-bqf configuration
     ./bufferline.nix
     ./cheatsheet.nix
