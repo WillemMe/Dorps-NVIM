@@ -72,7 +72,10 @@ in {
       path = evaledUndoDir;
     };
 
-    spellcheck = {enable = true;};
+    spellcheck = {
+      enable = true;
+      languages = ["en" "nl"];
+    };
 
     lsp = {
       enable = true;
