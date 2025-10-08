@@ -47,9 +47,9 @@ in {
       expandtab = true;
       smartindent = true;
 
-      wrap = false;
+      wrap = true;
 
-      swapfile = false;
+      swapfile = true;
       backup = false;
       foldlevelstart = 99;
       foldcolumn = "1";
@@ -71,6 +71,10 @@ in {
       enable = true;
       path = evaledUndoDir;
     };
+
+    additionalRuntimePaths = [
+      ../spell
+    ];
 
     spellcheck = {
       enable = true;
