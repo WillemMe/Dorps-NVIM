@@ -24,6 +24,7 @@ in {
     ./typst.nix
   ];
 
+  #home.file.".config/nvim"
   config.vim = {
     viAlias = true;
     vimAlias = true;
@@ -128,7 +129,7 @@ in {
     };
 
     visuals = {
-      nvim-scrollbar.enable = true;
+      nvim-scrollbar.enable = false;
       nvim-web-devicons.enable = true;
       nvim-cursorline.enable = true;
       cinnamon-nvim.enable = true;
