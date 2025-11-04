@@ -79,7 +79,7 @@ in {
 
     spellcheck = {
       enable = true;
-      languages = ["en" "nl"];
+      languages = ["en"]; #ADD NL
     };
 
     lsp = {
@@ -121,7 +121,6 @@ in {
       lua.enable = false;
       zig.enable = false;
       python.enable = true;
-      #typst.enable = false;
       rust = {
         enable = false;
         crates.enable = false;
@@ -164,7 +163,7 @@ in {
     minimap = {
       minimap-vim.enable = false;
       codewindow.enable =
-        true; # lighter, faster, and uses lua for configuration
+        false; # lighter, faster, and uses lua for configuration
     };
 
     dashboard = {
@@ -217,7 +216,7 @@ in {
         navbuddy.enable = true;
       };
       smartcolumn = {
-        enable = true;
+        enable = false;
         setupOpts = {
           colorcolumn = ["80" "160"];
           custom_colorcolumn = {

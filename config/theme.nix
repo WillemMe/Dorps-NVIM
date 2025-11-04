@@ -34,7 +34,7 @@
 
     highlight = {
       LineNr = {
-        fg = "#ffff00";
+        fg = "#eed49f";
         bold = true;
       };
     };
