@@ -147,7 +147,7 @@ in {
     snippets.luasnip.enable = true;
 
     filetree = {neo-tree = {enable = true;};};
-
+    treesitter.enable = true;
     treesitter.context.enable = true;
 
     telescope = {
