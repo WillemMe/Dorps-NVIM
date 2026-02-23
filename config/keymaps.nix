@@ -206,5 +206,67 @@
       silent = true;
       desc = "Exit terminal";
     }
+    
+    # =============================================================================
+    # Codebook Spell Checking Keybindings
+    # =============================================================================
+    {
+      mode = ["n"];
+      key = "<leader>sa";
+      action = "<cmd>lua vim.lsp.buf.code_action()<CR>";
+      silent = true;
+      desc = "Spell: Show code actions";
+    }
+    {
+      mode = ["n"];
+      key = "<leader>sd";
+      action = "<cmd>SpellAdd<CR>";
+      silent = true;
+      desc = "Spell: Add word to project dictionary";
+    }
+    {
+      mode = ["n"];
+      key = "<leader>sg";
+      action = "<cmd>SpellAddGlobal<CR>";
+      silent = true;
+      desc = "Spell: Add word to global dictionary";
+    }
+    {
+      mode = ["n"];
+      key = "<leader>ss";
+      action = "<cmd>SpellSuggest<CR>";
+      silent = true;
+      desc = "Spell: Show suggestions";
+    }
+    {
+      mode = ["n"];
+      key = "<leader>sf";
+      action = "<cmd>SpellFix<CR>";
+      silent = true;
+      desc = "Spell: Quick fix";
+    }
+    
+    # Language switching keybindings
+    {
+      mode = ["n"];
+      key = "<leader>sle";
+      action = "<cmd>SpellLangEn<CR>";
+      silent = true;
+      desc = "Spell: Switch to English only";
+    }
+    {
+      mode = ["n"];
+      key = "<leader>sln";
+      action = "<cmd>SpellLangNl<CR>";
+      silent = true;
+      desc = "Spell: Switch to Dutch only";
+    }
+    {
+      mode = ["n"];
+      key = "<leader>slb";
+      action = "<cmd>SpellLangBoth<CR>";
+      silent = true;
+      desc = "Spell: Switch to both languages";
+    }
   ];
 }

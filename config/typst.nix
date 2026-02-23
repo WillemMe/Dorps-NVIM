@@ -6,7 +6,7 @@
       lsp = {
         enable = true;
       };
-      format.type = "typstyle";
+      format.type = ["typstyle"];
       extensions = {
         typst-preview-nvim.enable = true;
       };

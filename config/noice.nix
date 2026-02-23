@@ -3,7 +3,33 @@
     ui = {
       noice = {
         enable = true;
-        setupOpts = {cmdline = {view = "cmdline";};};
+        setupOpts = {
+          cmdline = {view = "cmdline";};
+          # Filter out lspconfig deprecation warnings
+          routes = [
+            {
+              filter = {
+                event = "msg_show";
+                kind = "wmsg";
+                any = [
+                  {find = "lspconfig"}
+                  {find = "deprecated"}
+                ];
+              };
+              opts = {skip = true;};
+            }
+            {
+              filter = {
+                event = "notify";
+                any = [
+                  {find = "lspconfig"}
+                  {find = "deprecated"}
+                ];
+              };
+              opts = {skip = true;};
+            }
+          ];
+        };
       };
     };
     keymaps = [

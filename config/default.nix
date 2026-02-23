@@ -20,14 +20,17 @@ in {
     ./trouble-keymaps.nix
     ./tmux-navigator.nix # Added vim-tmux-navigator
     ./telescope-zoxide.nix # Added telescope-zoxide
-    #./latex.nix
+    ./latex/latex.nix # LaTeX language support
     ./typst.nix
+    ./spell/codebook-lsp.nix # Codebook LSP spell checking (successor to cspell-lsp)
+    #./spell/spellcheck.nix # Multi-language spell checking (EN/NL) - DISABLED, using Codebook LSP instead
   ];
 
   #home.file.".config/nvim"
   config.vim = {
     viAlias = true;
     vimAlias = true;
+
     clipboard = {
       registers = "unnamedplus";
       providers.wl-copy.enable = true; # For Wayland
@@ -73,15 +76,6 @@ in {
       path = evaledUndoDir;
     };
 
-    additionalRuntimePaths = [
-      ../spell
-    ];
-
-    spellcheck = {
-      enable = true;
-      languages = ["en"]; #ADD NL
-    };
-
     lsp = {
       enable = true;
       formatOnSave = true;
@@ -123,7 +117,7 @@ in {
       python.enable = true;
       rust = {
         enable = false;
-        crates.enable = false;
+        extensions.crates-nvim.enable = false;
       };
     };
 
