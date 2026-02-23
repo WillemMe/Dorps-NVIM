@@ -77,6 +77,9 @@ Leader key: `<Space>`
 
 | Key               | Mode   | Action                                  |
 | ----------------- | ------ | --------------------------------------- |
+| `<leader>ff`      | Normal | Telescope, find open filenames          |
+| `<leader>fg`      | Normal | Telescope, ripgrep on project           |
+| `<C-n>`           | Normal | Open file explorer                      |
 | `<C-d>` / `<C-u>` | Normal | Half-page down/up with auto-center      |
 | `n` / `N`         | Normal | Next/prev search with auto-center       |
 | `J` / `K`         | Visual | Move selected lines down/up             |
@@ -91,15 +94,6 @@ Leader key: `<Space>`
 | `<leader>a`   | Normal | Harpoon: Mark file            |
 | `<C-e>`       | Normal | Harpoon: Quick menu           |
 | `<C-h/j/k/l>` | Normal | Harpoon: Jump to file 1-4     |
-
-### Clipboard & Text
-
-| Key               | Mode          | Action                           |
-| ----------------- | ------------- | -------------------------------- |
-| `<leader>p`       | Visual        | Paste without losing yank buffer |
-| `<leader>y` / `Y` | Normal/Visual | Yank to system clipboard         |
-| `<leader>d`       | Normal/Visual | Delete without yanking           |
-| `<leader>s`       | Normal        | Substitute word under cursor     |
 
 ### Spell Checking (Codebook LSP)
 
