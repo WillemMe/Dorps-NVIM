@@ -15,7 +15,7 @@ in {
     lsp = {
       enable = true;
       lspconfig = {
-        enable = true;
+        enable = false;
         sources.texlab = ''
           -- Suppress lspconfig deprecation warning
           local notify_once = vim.notify_once
