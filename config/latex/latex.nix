@@ -39,11 +39,10 @@ in {
 
 
             -- Register and enable Texlab LSP using modern Neovim 0.11+ API
-            vim.lsp.config('texlab', texlab_config)
+            -- DISABLED vim.lsp.config('texlab', texlab_config)
 
-            vim.lsp.set_log_level("debug")
             -- Enable the LSP for current and future buffers
-            vim.lsp.enable('texlab')
+            -- DISABLED vim.lsp.enable('texlab')
     '';
     # =============================================================================
     # Treesitter Configuration
