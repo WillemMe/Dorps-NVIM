@@ -7,66 +7,44 @@
 {pkgs, ...}: let
   # Embed chktexrc configuration
   chktexrcContent = builtins.readFile ./chktexrc;
+  # Embed texlab.lua as the source of truth for LSP configuration
+  texlabConfig = builtins.readFile ./texlab.lua;
+  indentConfigPath = ./indentconfig.yaml; # This will be a Nix store path
 in {
   config.vim = {
     # =============================================================================
-    # LSP Configuration (texlab)
+    # LSP Configuration (texlab) - Uses texlab.lua as source of truth
     # =============================================================================
-    lsp = {
-      enable = true;
-      lspconfig = {
-        enable = true;
-        sources.texlab = ''
-          -- Suppress lspconfig deprecation warning
-          local notify_once = vim.notify_once
-          vim.notify_once = function(msg, ...)
-            if type(msg) == "string" and msg:match("lspconfig.*deprecated") then
+    luaConfigRC.texlab-lsp = ''
+            -- Texlab LSP Configuration
+            -- Source of truth: texlab.lua
+
+            -- Guard: Ensure texlab is available in PATH
+            if vim.fn.executable('${pkgs.texlab}/bin/texlab') ~= 1 then
+              vim.notify('texlab not found in PATH', vim.log.levels.WARN)
               return
             end
-            return notify_once(msg, ...)
-          end
 
-          lspconfig.texlab.setup {
-            capabilities = capabilities,
-            on_attach = default_on_attach,
-            cmd = {"${pkgs.texlab}/bin/texlab"},
-            settings = {
-              texlab = {
-                -- Diagnostics settings
-                diagnosticsDelay = 500,
-                formatterLineLength = 80,
-              },
-            },
-          }
+            -- Load the texlab configuration from embedded file
+            -- This is the complete texlab.lua configuration
+            local texlab_config = (function()
+      ${texlabConfig}
+            end)()
 
-          -- Restore original notify_once
-          vim.notify_once = notify_once
-        '';
-      };
-    };
-    # -- Build configuration
-    #             build = {
-    #               executable = "latexmk",
-    #               args = { "-pdf", "-interaction=nonstopmode", "-synctex=1", "%f" },
-    #               onSave = false,
-    #               forwardSearchAfter = false,
-    #             },
-    #             -- Forward search configuration (for PDF viewers)
-    #             forwardSearch = {
-    #               executable = "zathura",
-    #               args = { "--synctex-forward", "%l:1:%f", "%p" },
-    #             },
-    #
-    #            chktex = {
-    #              onEdit = false,  -- Run chktex on file edit
-    #              onOpenAndSave = false, -- Run chktex on open and save, (DISABLED for chrases)
-    #              additionalArgs = {"--localrc", vim.fn.stdpath('config') .. '/chktexrc'},
-    #            },
-    #            -- Lint configuration
-    #            lint = {
-    #              onChange = false,
-    #            },
-    #
+            -- Override cmd with Nix-provided path
+            texlab_config.cmd = { '${pkgs.texlab}/bin/texlab' }
+
+            -- Override cmd with Nix-provided path
+            texlab_config.settings.texlab.latexindent['local'] = '${indentConfigPath}'
+
+
+            -- Register and enable Texlab LSP using modern Neovim 0.11+ API
+            vim.lsp.config('texlab', texlab_config)
+
+            vim.lsp.set_log_level("debug")
+            -- Enable the LSP for current and future buffers
+            vim.lsp.enable('texlab')
+    '';
     # =============================================================================
     # Treesitter Configuration
     # =============================================================================
