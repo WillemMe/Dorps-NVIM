@@ -50,7 +50,7 @@ in {
                 -- Lint configuration
                 chktex = {
                   onEdit = false,  -- Run chktex on file edit
-                  onOpenAndSave = true, -- Run chktex on open and save
+                  onOpenAndSave = false, -- Run chktex on open and save, (DISABLED for chrases)
                   additionalArgs = {"--localrc", vim.fn.stdpath('config') .. '/chktexrc'},
                 },
                 lint = {
