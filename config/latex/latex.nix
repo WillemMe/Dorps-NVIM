@@ -15,7 +15,7 @@ in {
     lsp = {
       enable = true;
       lspconfig = {
-        enable = false;
+        enable = true;
         sources.texlab = ''
           -- Suppress lspconfig deprecation warning
           local notify_once = vim.notify_once
@@ -32,30 +32,9 @@ in {
             cmd = {"${pkgs.texlab}/bin/texlab"},
             settings = {
               texlab = {
-                -- Build configuration (disabled)
-             -- --   build = {
-             -- --     executable = "latexmk",
-             -- --     args = { "-pdf", "-interaction=nonstopmode", "-synctex=1", "%f" },
-             -- --     onSave = false,
-             -- --     forwardSearchAfter = false,
-             -- --   },
-             -- --   -- Forward search configuration (for PDF viewers)
-             -- --   forwardSearch = {
-             -- --     executable = "zathura",
-             -- --     args = { "--synctex-forward", "%l:1:%f", "%p" },
-             -- --   },
                 -- Diagnostics settings
-                diagnosticsDelay = 300,
+                diagnosticsDelay = 500,
                 formatterLineLength = 80,
-                -- Lint configuration
-                chktex = {
-                  onEdit = false,  -- Run chktex on file edit
-                  onOpenAndSave = false, -- Run chktex on open and save, (DISABLED for chrases)
-                  additionalArgs = {"--localrc", vim.fn.stdpath('config') .. '/chktexrc'},
-                },
-                lint = {
-                  onChange = false,
-                },
               },
             },
           }
@@ -65,7 +44,29 @@ in {
         '';
       };
     };
-
+    # -- Build configuration
+    #             build = {
+    #               executable = "latexmk",
+    #               args = { "-pdf", "-interaction=nonstopmode", "-synctex=1", "%f" },
+    #               onSave = false,
+    #               forwardSearchAfter = false,
+    #             },
+    #             -- Forward search configuration (for PDF viewers)
+    #             forwardSearch = {
+    #               executable = "zathura",
+    #               args = { "--synctex-forward", "%l:1:%f", "%p" },
+    #             },
+    #
+    #            chktex = {
+    #              onEdit = false,  -- Run chktex on file edit
+    #              onOpenAndSave = false, -- Run chktex on open and save, (DISABLED for chrases)
+    #              additionalArgs = {"--localrc", vim.fn.stdpath('config') .. '/chktexrc'},
+    #            },
+    #            -- Lint configuration
+    #            lint = {
+    #              onChange = false,
+    #            },
+    #
     # =============================================================================
     # Treesitter Configuration
     # =============================================================================
