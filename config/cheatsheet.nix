@@ -14,7 +14,9 @@
       cheatsheet = {
         package = cheatsheet-nvim;
         setup = "require('cheatsheet').setup({
-            bundled_cheatsheets = true,
+            bundled_cheatsheets = {
+                disabled = { 'nerd-fonts' },
+            },
             bundled_plugin_cheatsheets = true,
             include_only_installed_plugins = true,
             telescope_mappings = {
