@@ -206,67 +206,30 @@
       silent = true;
       desc = "Exit terminal";
     }
-    
+
     # =============================================================================
-    # Codebook Spell Checking Keybindings
+    # LTeX Grammar Checking Keybindings
     # =============================================================================
-    {
-      mode = ["n"];
-      key = "<leader>sa";
-      action = "<cmd>lua vim.lsp.buf.code_action()<CR>";
-      silent = true;
-      desc = "Spell: Show code actions";
-    }
-    {
-      mode = ["n"];
-      key = "<leader>sd";
-      action = "<cmd>SpellAdd<CR>";
-      silent = true;
-      desc = "Spell: Add word to project dictionary";
-    }
-    {
-      mode = ["n"];
-      key = "<leader>sg";
-      action = "<cmd>SpellAddGlobal<CR>";
-      silent = true;
-      desc = "Spell: Add word to global dictionary";
-    }
     {
       mode = ["n"];
       key = "<leader>ss";
-      action = "<cmd>SpellSuggest<CR>";
+      action = "<cmd>lua vim.lsp.buf.code_action()<CR>";
       silent = true;
-      desc = "Spell: Show suggestions";
+      desc = "Spelling: Show suggestions";
     }
-    {
-      mode = ["n"];
-      key = "<leader>sf";
-      action = "<cmd>SpellFix<CR>";
-      silent = true;
-      desc = "Spell: Quick fix";
-    }
-    
-    # Language switching keybindings
     {
       mode = ["n"];
       key = "<leader>sle";
-      action = "<cmd>SpellLangEn<CR>";
+      action = "<cmd>LtexLangEn<CR>";
       silent = true;
-      desc = "Spell: Switch to English only";
+      desc = "Spelling: Switch to English";
     }
     {
       mode = ["n"];
       key = "<leader>sln";
-      action = "<cmd>SpellLangNl<CR>";
+      action = "<cmd>LtexLangNl<CR>";
       silent = true;
-      desc = "Spell: Switch to Dutch only";
-    }
-    {
-      mode = ["n"];
-      key = "<leader>slb";
-      action = "<cmd>SpellLangBoth<CR>";
-      silent = true;
-      desc = "Spell: Switch to both languages";
+      desc = "Spelling: Switch to Dutch";
     }
   ];
 }
