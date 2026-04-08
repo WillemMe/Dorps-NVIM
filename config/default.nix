@@ -23,6 +23,7 @@ in {
     ./latex/latex.nix # LaTeX language support
     ./typst.nix
     ./spell/codebook-lsp.nix # Codebook LSP spell checking (successor to cspell-lsp)
+    ./spell/languagetool.nix # LanguageTool grammar checker
     #./spell/spellcheck.nix # Multi-language spell checking (EN/NL) - DISABLED, using Codebook LSP instead
   ];
 
