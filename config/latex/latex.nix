@@ -44,6 +44,7 @@ in {
             -- Enable the LSP for current and future buffers
             -- DISABLED vim.lsp.enable('texlab')
     '';
+
     # =============================================================================
     # Treesitter Configuration
     # =============================================================================

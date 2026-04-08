@@ -1,0 +1,86 @@
+# chktex fine tuning for Secura reports
+#
+# Not specifying equals symbol before { means the defaults get extended with
+# the values defined below.
+
+CmdLine
+{
+    # Do not complain about not being able to \input or \include files
+    # Chktex will be executed on each file individually in pipelines
+    --inputfiles
+
+    # Wrong length of dash may have been us. Usually this is fine.
+    --nowarn 8
+
+    # Interword spacing (`\ ') should perhaps be used. This typically occurs if
+    # a sentence starts with \app{} or \acs{} but is a false positive.
+    --nowarn 12
+
+    # Use either `` or '' as an alternative to `"'.
+    # Causes big issues with \cvss{} command, so we're turning it off for now
+    --nowarn 18
+
+    # User Regex: -2:Use \toprule, midrule, or \bottomrule from booktabs.
+    # We don't use booktabs otherwise longtables look weird
+    --nowarn 44
+
+    # Intersentence spacing (`\@') should perhaps be used.
+    # Usually chktex is wrong about these
+    --nowarn 13
+
+    # No italic correction (`\/') found.
+    # It doesn't really look that bad, so we can ignore it.
+    --nowarn 6
+
+    # You should put a space in front of/after parenthesis.
+    # This leads to many false positives with words such as:
+    # cookie(s)
+    --nowarn 36
+
+    # You should not use punctuation in front of quotes. 
+    # This often leads to false positives if citing entire sentences including
+    # punctuation, so we turn it off.
+    --nowarn 38
+
+    # No match for (, {, \begin{env}
+    # This leads to many false positives, such as \cmd{%x()}, because the % is
+    # interpreted and seems to cause the } to be treated as a comment
+    # Hopefully these will be caught by the readme-wrapper in the pipeline
+    --nowarn 15
+
+    # Number of `{' doesn't match the number of `}'!
+    # This leads to many false positives, such as
+    # \cmd{<@ Page validateRequest="false" %>}, because the % is interpreted
+    # and seems to cause the } to be treated as a comment.
+    --nowarn 17
+}
+
+# Verbatim environments; not parsed.
+VerbEnvir {
+    code coden
+}
+
+# Commands with verbatim parameters; not parsed.
+WipeArg {
+    \cmd:{} \command:{} \path:{} \url:{}
+    \cvss:{} # Not working because it is a multiline command: https://savannah.nongnu.org/bugs/?55317
+    \NOTE:{} \TODO:{}
+    \ac:{} \acf:{} \acl:{} \acs:{} \acfp:{} \aclp:{} \acsp:{} \acfi:{} \acsu:{} \aclu:{}
+    \Ac:{} \Acf:{} \Acl:{} \Acs:{} \Acfp:{} \Aclp:{} \Acsp:{} \Acfi:{} \Acsu:{} \Aclu:{}
+    \acused:{}
+    \acresetall:{}
+}
+
+# Commands that should be prepended with a ~.
+Linker {
+    \cref
+}
+
+# Commands that are allowed to be terminated with a space.
+Silent {
+    \backmatter \frontmatter \mainmatter
+    \bottomrule \midrule \toprule
+    \endhead \endfirsthead
+    \endfoot \endlastfoot
+    \subitem
+}

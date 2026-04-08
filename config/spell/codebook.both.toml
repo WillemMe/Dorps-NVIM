@@ -1,0 +1,81 @@
+# Codebook Configuration
+# Project-wide spell checking for Neovim with Dutch and English support
+# Documentation: https://github.com/blopker/codebook
+
+version = "0.2"
+
+
+# ============================================================================
+# Languages and Dictionaries
+# ============================================================================
+
+# Languages to check
+dictionaries = ["en_us", "nl_nl"]
+
+# ============================================================================
+# Project-specific Words
+# ============================================================================
+
+# Common project words (always allowed)
+words = [
+  
+]
+flag_words = ["TODO", "fixme"]
+
+# ============================================================================
+# File Type Configuration
+# ============================================================================
+
+# Enable spell checking for these file types
+enabled_file_types = [
+    "tex",
+    "bib",
+    "markdown",
+    "text",
+    "gitcommit",
+    "nix",
+    "lua",
+    "typst",
+]
+
+# ============================================================================
+# Ignore Patterns
+# ============================================================================
+
+# Paths to ignore (glob patterns)
+ignore_paths = [
+    "node_modules/**",
+    ".git/**",
+    "*.min.js",
+    "*.min.css",
+    "result",
+    "result-*",
+    ".direnv/**",
+    ".nix-*/**",
+    "dictionaries/*.dic",
+    "dictionaries/*.aff",
+    "dictionaries/*.spl",
+]
+
+# Regex patterns to ignore within files
+ignore_patterns = [
+    # LaTeX citations and references
+    "\\\\cite\\{[^}]*\\}",
+    "\\\\ref\\{[^}]*\\}",
+    "\\\\label\\{[^}]*\\}",
+    "\\\\begin\\{[^}]*\\}",
+    "\\\\end\\{[^}]*\\}",
+    
+    # Common LaTeX commands with parameters
+    "\\\\includegraphics(\\[[^\\]]*\\])?\\{[^}]*\\}",
+    "\\\\input\\{[^}]*\\}",
+    "\\\\include\\{[^}]*\\}",
+
+    '\b[ATCG]+\b',             # DNA sequences
+    '\d{3}-\d{2}-\d{4}',       # Social Security Number format
+    '^[A-Z]{2,}$',             # All caps words like "HTML", "CSS"
+    'https?://[^\s]+'          # URLs
+]
+
+min_word_length = 3
+

@@ -112,6 +112,14 @@ in {
                       end
                     end
 
+                    -- Store buffers that had codebook attached
+                    local attached_buffers = {}
+                    for _, client in ipairs(clients) do
+                      for bufnr, _ in pairs(client.attached_buffers or {}) do
+                        table.insert(attached_buffers, bufnr)
+                      end
+                    end
+
                     -- Stop all codebook clients
                     for _, client in ipairs(clients) do
                       client.stop()
@@ -122,12 +130,14 @@ in {
                       -- Re-enable will attach to current and future buffers
                       vim.lsp.enable('codebook')
 
+
                       -- Re-attach to previously attached buffers
                       for _, bufnr in ipairs(attached_buffers) do
                         if vim.api.nvim_buf_is_valid(bufnr) then
                           vim.lsp.buf_attach_client(bufnr, vim.lsp.get_clients({ name = 'codebook' })[1].id)
                         end
                       end
+
 
                       vim.notify('Codebook LSP restarted with new language config', vim.log.levels.INFO)
                     end, 800)
@@ -160,7 +170,6 @@ in {
 
               file:write(preset_content)
               file:close()
-
               -- Wait a moment to ensure file is written to disk
               vim.defer_fn(function() end, 100)
 
