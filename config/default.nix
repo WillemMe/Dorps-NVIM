@@ -24,6 +24,7 @@ in {
     ./typst.nix
     ./spell/languagetool.nix # LanguageTool grammar checker
     #./spell/spellcheck.nix # Multi-language spell checking (EN/NL) - DISABLED, using Codebook LSP instead
+    ./treesitter.nix
   ];
 
   #home.file.".config/nvim"
@@ -141,8 +142,6 @@ in {
     snippets.luasnip.enable = true;
 
     filetree = {neo-tree = {enable = true;};};
-    treesitter.enable = true;
-    treesitter.context.enable = true;
 
     telescope = {
       enable = true;
