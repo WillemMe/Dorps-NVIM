@@ -22,7 +22,6 @@ in {
     ./telescope-zoxide.nix # Added telescope-zoxide
     ./latex/latex.nix # LaTeX language support
     ./typst.nix
-    #./spell/codebook-lsp.nix # Codebook LSP spell checking (successor to cspell-lsp)
     ./spell/languagetool.nix # LanguageTool grammar checker
     #./spell/spellcheck.nix # Multi-language spell checking (EN/NL) - DISABLED, using Codebook LSP instead
   ];
@@ -199,10 +198,7 @@ in {
 
     ui = {
       borders.enable = true;
-      noice = {
-        enable = true;
-        setupOpts = {cmdline = {view = "cmdline";};};
-      };
+
       colorizer.enable = true;
       modes-nvim.enable = false; # the theme looks terrible with catppuccin
       illuminate.enable = true;
