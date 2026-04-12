@@ -23,7 +23,7 @@
         # Default provider for chat and suggestions
         provider = "gemini";
         auto_suggestions_provider = "gemini";
-        
+
         # System prompt configuration
         system_prompt = ''
           You are an AI Programming Assistant integrated into Neovim.
@@ -33,7 +33,7 @@
           - Format code snippets using markdown code blocks.
           - If a request is ambiguous, ask for clarification.
         '';
-        
+
         # Provider configurations
         providers = {
           openai = {
@@ -42,41 +42,41 @@
             timeout = 30000;
             extra_request_body = {
               temperature = 0;
-              max_tokens = 16384;  # 16K output tokens for o4-mini
+              max_tokens = 16384; # 16K output tokens for o4-mini
             };
           };
           claude = {
             endpoint = "https://api.anthropic.com";
-            model = "claude-opus-4-20250514";  # Claude Opus 4 - latest
+            model = "claude-opus-4-20250514"; # Claude Opus 4 - latest
             extra_request_body = {
               temperature = 0;
-              max_tokens = 32000;  # 32K output tokens
+              max_tokens = 32000; # 32K output tokens
             };
           };
           gemini = {
-            model = "gemini-2.5-flash";  # Latest Gemini 2.5 Flash
+            model = "gemini-2.5-flash"; # Latest Gemini 2.5 Flash
             extra_request_body = {
               temperature = 0;
-              max_tokens = 8192;  # Gemini typically supports 8K output
+              max_tokens = 8192; # Gemini typically supports 8K output
             };
           };
           openrouter = {
             __inherited_from = "openai";
             endpoint = "https://openrouter.ai/api/v1";
-            model = "anthropic/claude-sonnet-4:beta";  # Claude Sonnet 4 via OpenRouter
+            model = "anthropic/claude-sonnet-4:beta"; # Claude Sonnet 4 via OpenRouter
             extra_request_body = {
               temperature = 0;
-              max_tokens = 64000;  # Claude Sonnet 4 supports 64K output
+              max_tokens = 64000; # Claude Sonnet 4 supports 64K output
             };
           };
         };
-        
+
         # Diff settings
         diff = {
           autojump = true;
           list_opener = "copen";
         };
-        
+
         # Highlights
         highlights = {
           diff = {
@@ -84,7 +84,7 @@
             incoming = "DiffAdd";
           };
         };
-        
+
         # Behavior settings
         behaviour = {
           auto_suggestions = false;
@@ -93,12 +93,12 @@
           auto_apply_diff_after_generation = false;
           support_paste_from_clipboard = false;
         };
-        
+
         # Hints
         hints = {
           enabled = true;
         };
-        
+
         # Mappings
         mappings = {
           diff = {
@@ -110,7 +110,7 @@
             theirs = "ct";
           };
         };
-        
+
         # Windows
         windows = {
           sidebar_header = {
