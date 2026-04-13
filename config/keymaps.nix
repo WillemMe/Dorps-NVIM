@@ -117,15 +117,21 @@
       silent = true; # Note: action already contains <cmd>silent, but adding here for consistency
       desc = "Open tmux sessionizer";
     }
-    # format current buffer
+    # format current selection
     {
-      mode = ["n"];
-      key = "<leader>f";
-      action = "<cmd>Format<CR>";
+      mode = ["v"];
+      key = "<leader>fj";
+      action = ":'<,'>!jq .<CR>";
       silent = true;
-      desc = "Format buffer";
+      desc = "Format selected JSON with jq";
     }
-
+    {
+      mode = ["v"];
+      key = "<leader>fx";
+      action = ":%!xmllint --format -<CR>";
+      silent = true;
+      desc = "Format XML with xmllint";
+    }
     {
       mode = ["n"];
       key = "<C-k>";
