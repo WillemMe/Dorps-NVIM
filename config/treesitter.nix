@@ -12,7 +12,7 @@
   latexTodoQuery = ''
     ; extends
 
-    (generic_command
+     (generic_command
       (command_name) @_name
       (#eq? @_name "\\TODO")) @comment.todo
 
@@ -50,5 +50,18 @@ in {
         package = commentHighlightQueries;
       };
     };
+
+    luaConfigPost = ''
+      local function setup_bang_hl()
+        vim.api.nvim_set_hl(0, "BangHighlight", { fg = "#ff9500", bold = true })
+      end
+      setup_bang_hl()
+      vim.api.nvim_create_autocmd("ColorScheme", { callback = setup_bang_hl })
+      vim.api.nvim_create_autocmd({ "BufWinEnter", "WinNew" }, {
+        callback = function()
+          pcall(vim.fn.matchadd, "BangHighlight", "!!.\\{-}!!")
+        end,
+      })
+    '';
   };
 }

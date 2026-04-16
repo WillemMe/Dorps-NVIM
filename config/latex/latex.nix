@@ -111,9 +111,6 @@ in {
                 -- Disable automatic comment continuation
                 vim.opt_local.formatoptions:remove({ "c", "r", "o" })
 
-                -- Set text width for LaTeX files
-                vim.opt_local.textwidth = 80
-
                 -- Disable Neovim's built-in spell checking (using Codebook LSP instead)
                 vim.opt_local.spell = false
 
@@ -130,7 +127,6 @@ in {
             vim.api.nvim_create_autocmd("FileType", {
               pattern = "bib",
               callback = function()
-                vim.opt_local.textwidth = 80
                 -- Disable Neovim's built-in spell checking (using Codebook LSP instead)
                 vim.opt_local.spell = false
               end,
