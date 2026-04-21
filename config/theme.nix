@@ -1,15 +1,13 @@
-{pkgs, ...}:
-let
-  activeTheme = "gruvbox-dark-hard"; # keep in sync with home-dots stylix activeTheme
+{pkgs, ...}: let
+  activeTheme = "tokyo-night-dark"; # keep in sync with home-dots stylix activeTheme
 
   # Parse the base16 YAML scheme file using IFD
-  palette =
-    let
-      json = pkgs.runCommand "base16-scheme-json" {buildInputs = [pkgs.yq-go];} ''
-        yq -o=json '.palette' ${pkgs.base16-schemes}/share/themes/${activeTheme}.yaml > $out
-      '';
-    in
-      builtins.fromJSON (builtins.readFile json);
+  palette = let
+    json = pkgs.runCommand "base16-scheme-json" {buildInputs = [pkgs.yq-go];} ''
+      yq -o=json '.palette' ${pkgs.base16-schemes}/share/themes/${activeTheme}.yaml > $out
+    '';
+  in
+    builtins.fromJSON (builtins.readFile json);
 in {
   config.vim = {
     statusline = {
