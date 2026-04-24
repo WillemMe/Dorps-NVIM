@@ -48,10 +48,17 @@
           return
         end
         for _, client in ipairs(clients) do
-          client.config.settings = vim.tbl_deep_extend('force', client.config.settings, {
-            ltex = { language = lang },
+          client.config.settings.ltex = vim.tbl_deep_extend('force', client.config.settings.ltex or {}, {
+            language = lang,
           })
           client.notify('workspace/didChangeConfiguration', { settings = client.config.settings })
+          -- Re-check the current buffer immediately after switching language
+          local bufnr = vim.api.nvim_get_current_buf()
+          local uri = vim.uri_from_bufnr(bufnr)
+          client.request('workspace/executeCommand', {
+            command = '_ltex.checkDocument',
+            arguments = { { uri = uri } },
+          }, nil, bufnr)
         end
         vim.notify('ltex language set to ' .. lang, vim.log.levels.INFO)
       end
