@@ -1,5 +1,5 @@
 {pkgs, ...}: let
-  activeTheme = "tokyo-night-dark"; # keep in sync with home-dots stylix activeTheme
+  activeTheme = "tomorrow-night"; # keep in sync with home-dots stylix activeTheme
 
   # Parse the base16 YAML scheme file using IFD
   palette = let

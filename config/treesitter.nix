@@ -25,7 +25,7 @@
     src = pkgs.runCommand "comment-highlight-queries-src" {} ''
       mkdir -p $out
 
-      for lang in nix bash lua python c markdown; do
+      for lang in nix bash lua python c; do
         mkdir -p $out/after/queries/$lang
         cat > $out/after/queries/$lang/highlights.scm << 'QUERY'
       ${commentXxxQuery}
