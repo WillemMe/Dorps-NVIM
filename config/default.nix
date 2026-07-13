@@ -1,4 +1,4 @@
-_: let
+{lib, ...}: let
   currentSystemHome = builtins.getEnv "HOME";
 
   evaledUndoDir =
@@ -88,7 +88,9 @@ in {
       otter-nvim.enable = true;
       nvim-docs-view.enable = true;
     };
-
+    formatter = {
+      conform-nvim.enable = lib.mkForce false; #Disabled because of CVE
+    };
     debugger = {
       nvim-dap = {
         enable = true;
@@ -111,7 +113,7 @@ in {
       sql.enable = false;
       java.enable = false;
       kotlin.enable = false;
-      ts.enable = false;
+      typescript.enable = false;
       go.enable = false;
       lua.enable = false;
       zig.enable = false;
@@ -160,7 +162,9 @@ in {
     };
 
     dashboard = {
-      dashboard-nvim.enable = false;
+      dashboard-nvim = {
+        enable = false;
+      };
       alpha.enable = true;
     };
 
@@ -184,7 +188,6 @@ in {
     notes = {
       neorg.enable = false;
       orgmode.enable = false;
-      mind-nvim.enable = true;
       todo-comments.enable = true;
     };
 
