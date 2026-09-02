@@ -237,5 +237,20 @@
       silent = true;
       desc = "Spelling: Switch to Dutch";
     }
+    {
+      mode = ["n"];
+      key = "<leader>sa";
+      action = "<cmd>lua vim.diagnostic.open_float()<CR>";
+      silent = true;
+      desc = "Show diagnostic under cursor";
+    }
+    # Custom replace
+    {
+      mode = ["x"];
+      key = "<C-s>";
+      action = "\"_c[...]<Esc>";
+      silent = true;
+      desc = "Replace selection with [...]";
+    }
   ];
 }
