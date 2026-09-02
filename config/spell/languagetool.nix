@@ -14,9 +14,11 @@
       -- Register LTeX LSP using Neovim 0.11+ API
       vim.lsp.config('ltex', {
         cmd = { 'ltex-ls' },
+        cmd_env = { JAVA_OPTS = "-Xmx4g -Xss8m" },
         filetypes = {
           'markdown',
           'text',
+          'plaintex',
           'gitcommit',
           'tex',
           'bib',
@@ -28,6 +30,7 @@
         settings = {
           ltex = {
             language = 'en-US',
+            sentenceCacheSize = 20000,
             checkFrequency = 'save',
             logLevel = 'config',
             additionalRules = {
