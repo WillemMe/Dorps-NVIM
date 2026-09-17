@@ -246,8 +246,8 @@
     }
     # Custom replace
     {
-      mode = ["x"];
-      key = "<C-s>";
+      mode = ["v"];
+      key = "<leader>fc";
       action = "\"_c[...]<Esc>";
       silent = true;
       desc = "Replace selection with [...]";
