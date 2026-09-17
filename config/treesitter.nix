@@ -7,7 +7,8 @@
       (#match? @comment.todo "XXX"))
   '';
 
-  # Query for \TODO{} as a LaTeX command node, and XXX anywhere in text.
+  # Query for \TODO{} as a LaTeX command node, and XXX anywhere in text
+  # (also inside words, e.g. fooXXXbar).
   # Uses (word) nodes so XXX inside % line_comment nodes is NOT matched.
   latexTodoQuery = ''
     ; extends
@@ -17,7 +18,7 @@
       (#eq? @_name "\\TODO")) @comment.todo
 
     ((word) @comment.todo
-      (#eq? @comment.todo "XXX"))
+      (#match? @comment.todo "\\CXXX"))
   '';
 
   commentHighlightQueries = pkgs.vimUtils.buildVimPlugin {
